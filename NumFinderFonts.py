@@ -82,7 +82,7 @@ model = tf.keras.Sequential([
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # Train the model
-model.fit(x_train, y_train, epochs=500, batch_size=32, validation_split=0.2)
+model.fit(x_train, y_train, epochs=1000, batch_size=32, validation_split=0.2)
 
 # Evaluate the model
 loss, accuracy = model.evaluate(x_test, y_test)
@@ -91,3 +91,6 @@ print(f"Test Loss: {loss}, Test Accuracy: {accuracy}")
 # Predict
 predictions = model.predict(x_test)
 #print(predictions)
+
+# Save the model in the SavedModel format
+model.save("C:/python_work/AI/DWG2CAD/Models/NumFinderFonts.keras")
