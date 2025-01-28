@@ -5,10 +5,20 @@ import random
 
 
 # Function to select a file
-def select_file():
+def select_file(element):
     file_path = filedialog.askopenfilename()
     if file_path:
-        print(f"Selected file: {file_path}")
+        if element == "model":
+            model_textbox.configure(state="normal")
+            model_textbox.delete("0.0", "end")
+            model_textbox.insert("0.0", file_path)
+            model_textbox.configure(state="disabled")
+            print(file_path)
+        elif element == "image":
+            image_textbox.configure(state="normal")
+            image_textbox.delete("0.0", "end")
+            image_textbox.insert("0.0", file_path)
+            image_textbox.configure(state="disabled")
         
         
 # Function to generate random bars
@@ -33,6 +43,9 @@ def generate_bars():
         # Add the value as text above the bar
         canvas.create_text((x0 + x1) / 2, y1 - 10, text=f"{random_value:.2f}", fill="black")
         
+        # Add the element as text below the bar
+        canvas.create_text((x0 + x1) / 2, y0 + 10, text=f"{i}", fill="black")
+        
         
 # Initialize the root window
 root = customtkinter.CTk()
@@ -55,7 +68,7 @@ model_textbox.configure(state="disabled")  # Disable textbox to be read-only
 model_textbox.pack(side=LEFT, anchor=NW, padx=16, pady=16)
 
 # Create a button to select a model
-select_model_button = customtkinter.CTkButton(master=model_frame, text="Select Model", command=select_file)
+select_model_button = customtkinter.CTkButton(master=model_frame, text="Select Model", command=lambda: select_file("model"))
 select_model_button.pack(side=LEFT, anchor=NW, padx=16, pady=16)
 
 # Create a text box to display the image file path
@@ -65,13 +78,12 @@ image_textbox.configure(state="disabled")  # Disable textbox to be read-only
 image_textbox.pack(side=LEFT, anchor=NW, padx=16, pady=16)
 
 # Create a button to select an image
-select_image_button = customtkinter.CTkButton(master=image_frame, text="Select Image", command=select_file)
+select_image_button = customtkinter.CTkButton(master=image_frame, text="Select Image", command=lambda: select_file("image"))
 select_image_button.pack(side=LEFT, anchor=NW, padx=16, pady=16)
 
 # Create a button to run the model
 run_model_button = customtkinter.CTkButton(master=root, text="Run Model", command=generate_bars)
 run_model_button.pack(padx=16, pady=16)
-
 
 # Canvas to draw bars
 canvas = customtkinter.CTkCanvas(root, width=430, height=360, bg="white")
