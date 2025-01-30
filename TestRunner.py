@@ -53,16 +53,18 @@ def ask():
     
     # Iterate across the images
     predictions = []
+    images_array = []
     for image_path in img_path_text:
         # Load the image as an array
         normalized_array = image_to_normalized_array(image_path)
         
         if normalized_array is not None:
-            # Use the model for predictions
-            prediction = model.predict(normalized_array)
-            predictions.append(prediction)
+            images_array.append(normalized_array)
         else:
             print("Failed to load and process the image.")
+    
+    # Use the model for predictions
+    predictions = model.predict(np.array(images_array))
     return predictions
 
 
@@ -102,7 +104,7 @@ def generate_bars():
     predictions = ask()
     length = len(predictions)
     for prediction in predictions:
-        for i, answer in enumerate(prediction[0]):
+        for i, answer in enumerate(prediction):
             numbers[i] += answer
             
     # Draw the bars
