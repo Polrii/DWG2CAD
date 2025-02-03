@@ -1,0 +1,13 @@
+train: C:/python_work/AI/DWG2CAD/TrainingData/NumsDataset.v5i.yolov8/train/images
+val: C:/python_work/AI/DWG2CAD/TrainingData/NumsDataset.v5i.yolov8/valid/images
+test: C:/python_work/AI/DWG2CAD/TrainingData/NumsDataset.v5i.yolov8/test/images
+
+nc: 51
+names: ['-', '0', '1', '1060AlumAlloy', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'ABS', 'All', 'B', 'Block', 'Coma', 'ConstantSized', 'Default', 'Degrees', 'Density', 'Depth', 'Diameter', 'Draft', 'Ellipse', 'Elliptical', 'EquallySpaced', 'GeneralNotes', 'Hole', 'IPS', 'InsideBendRadius', 'Instances', 'MMGS', 'Material', 'Places', 'PlainCarbonSteel', 'Profile', 'Radius', 'Rod', 'SYM', 'Section', 'Slot', 'Symmetry', 'Tangent', 'Thru', 'UnitSystem', 'WallThickness', 'X', 'grams', 'lbs']
+
+roboflow:
+  workspace: polriis-workspace
+  project: numsdataset
+  version: 5
+  license: MIT
+  url: https://universe.roboflow.com/polriis-workspace/numsdataset/dataset/5
