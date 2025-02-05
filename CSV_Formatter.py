@@ -10,6 +10,6 @@ def convert_csv(file_path):
             outfile.write('\t'.join(row) + '\n')
 
 if __name__ == "__main__":
-    file_path = "C:/python_work/AI/DWG2CAD/runs/detect/train2/results.csv"  # Change this to your file
+    file_path = "C:/python_work/AI/DWG2CAD/runs/detect/train3/results.csv"  # Change this to your file
     convert_csv(file_path)
     print(f"Modified file saved as {file_path}")
